@@ -7,8 +7,11 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    int scoreTeamA = 0;
-    int scoreTeamB = 0;
+    int scoreTeamA;
+    int scoreTeamB;
+
+    static final String STATE_scoreTeamA = "scoreTeamA";
+    static final String STATE_scoreTeamB = "scoreTeamB";
 
     int gameTotal = 15;
     int pointCap = 17;
@@ -19,6 +22,15 @@ public class MainActivity extends AppCompatActivity {
     TextView winView;
     TextView scoreViewA;
     TextView scoreViewB;
+
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Save the user's current game state
+        savedInstanceState.putInt(STATE_scoreTeamA, scoreTeamA);
+        savedInstanceState.putInt(STATE_scoreTeamB, scoreTeamB);
+
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +43,21 @@ public class MainActivity extends AppCompatActivity {
         winView = (TextView) findViewById(R.id.win);
         scoreViewA = (TextView) findViewById(R.id.team_a_score);
         scoreViewB = (TextView) findViewById(R.id.team_b_score);
+
+        if (savedInstanceState != null) {
+            // Restore value from saved state
+            scoreTeamA = savedInstanceState.getInt(STATE_scoreTeamA);
+            scoreTeamB = savedInstanceState.getInt(STATE_scoreTeamB);
+            displayForTeamA(scoreTeamA);
+            displayForTeamB(scoreTeamB);
+
+        } else {
+            // initialize  with default values for a new instance
+            scoreTeamA = 0;
+            scoreTeamB = 0;
+
+        }
+
     }
 
     /**
