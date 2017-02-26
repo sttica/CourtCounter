@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Ultimate Frisbee Score Counter</string>
+    <string name="score">Score</string>
+    <string name="teamA">Team A</string>
+    <string name="teamB">Team B</string>
+    <string name="reset">Reset</string>
+    <string name="teamAwin">Team A wins!</string>
+    <string name="teamBwin">Team B wins!</string>
+
+</resources>
