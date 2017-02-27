@@ -10,8 +10,8 @@ public class MainActivity extends AppCompatActivity {
     int scoreTeamA;
     int scoreTeamB;
 
-    static final String STATE_scoreTeamA = "scoreTeamA";
-    static final String STATE_scoreTeamB = "scoreTeamB";
+    static final String STATE_SCORE_TEAM_A = "scoreTeamA";
+    static final String STATE_SCORE_TEAM_B = "scoreTeamB";
 
     int gameTotal = 15;
     int pointCap = 17;
@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onSaveInstanceState(Bundle savedInstanceState) {
         // Save the user's current game state
-        savedInstanceState.putInt(STATE_scoreTeamA, scoreTeamA);
-        savedInstanceState.putInt(STATE_scoreTeamB, scoreTeamB);
+        savedInstanceState.putInt(STATE_SCORE_TEAM_A, scoreTeamA);
+        savedInstanceState.putInt(STATE_SCORE_TEAM_B, scoreTeamB);
 
         // Always call the superclass so it can save the view hierarchy state
         super.onSaveInstanceState(savedInstanceState);
@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState != null) {
             // Restore value from saved state
-            scoreTeamA = savedInstanceState.getInt(STATE_scoreTeamA);
-            scoreTeamB = savedInstanceState.getInt(STATE_scoreTeamB);
+            scoreTeamA = savedInstanceState.getInt(STATE_SCORE_TEAM_A);
+            scoreTeamB = savedInstanceState.getInt(STATE_SCORE_TEAM_B);
             displayForTeamA(scoreTeamA);
             displayForTeamB(scoreTeamB);
 
